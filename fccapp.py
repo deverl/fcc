@@ -27,7 +27,7 @@ HTML_TEMPLATE = """
         <label>Call Sign: <input type="text" name="call_sign" value="{{ params.call_sign if (params.call_sign is defined and params.call_sign is not none) else '' }}"></label><br>
         <label>First Name: <input type="text" name="first_name" value="{{ params.first_name if (params.first_name is defined and params.first_name is not none) else '' }}"></label><br>
         <label>Last Name: <input type="text" name="last_name" value="{{ params.last_name if (params.last_name is defined and params.last_name is not none) else '' }}"></label><br>
-        <label>City: <input type="text" name="city" value="{{ params.city if (params.city is defined and params.city is not none) else '' }}"></label>
+        <label>City: <input type="text" name="city" value="{{ params.city if (params.city is defined and params.city is not none) else '' }}"></label><br>
         <label>State: <input type="text" name="state" value="{{ params.state if (params.state is defined and params.state is not none) else '' }}"></label><br>
 
         <p>License Status:</p>
