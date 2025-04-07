@@ -86,37 +86,40 @@ def index():
         WHERE 1=1
     """
 
-    params = []
-    if query_params['call_sign']:
-        query += " AND en.call_sign = ?"
-        params.append(query_params['call_sign'].upper())
-    if query_params['first_name']:
-        query += " AND en.first_name LIKE ?"
-        params.append(f"%{query_params['first_name']}%")
-    if query_params['last_name']:
-        query += " AND en.last_name LIKE ?"
-        params.append(f"%{query_params['last_name']}%")
-    if query_params['city']:
-        query += " AND en.city LIKE ?"
-        params.append(f"%{query_params['city']}%")
-    if query_params['state']:
-        query += " AND en.state = ?"
-        params.append(query_params['state'].upper())
-    if query_params['license_status']:
-        placeholders = ','.join('?' for _ in query_params['license_status'])
-        query += f" AND hd.license_status IN ({placeholders})"
-        params.extend([s.upper() for s in query_params['license_status']])
-    if query_params['operator_class']:
-        placeholders = ','.join('?' for _ in query_params['operator_class'])
-        query += f" AND am.operator_class IN ({placeholders})"
-        params.extend([c.upper() for c in query_params['operator_class']])
+    if query_params['call_sign'] or query_params['first_name'] or query_params['last_name'] or query_params['city'] or query_params['state']:
+        params = []
+        if query_params['call_sign']:
+            query += " AND en.call_sign = ?"
+            params.append(query_params['call_sign'].upper())
+        if query_params['first_name']:
+            query += " AND en.first_name LIKE ?"
+            params.append(f"%{query_params['first_name']}%")
+        if query_params['last_name']:
+            query += " AND en.last_name LIKE ?"
+            params.append(f"%{query_params['last_name']}%")
+        if query_params['city']:
+            query += " AND en.city LIKE ?"
+            params.append(f"%{query_params['city']}%")
+        if query_params['state']:
+            query += " AND en.state = ?"
+            params.append(query_params['state'].upper())
+        if query_params['license_status']:
+            placeholders = ','.join('?' for _ in query_params['license_status'])
+            query += f" AND hd.license_status IN ({placeholders})"
+            params.extend([s.upper() for s in query_params['license_status']])
+        if query_params['operator_class']:
+            placeholders = ','.join('?' for _ in query_params['operator_class'])
+            query += f" AND am.operator_class IN ({placeholders})"
+            params.extend([c.upper() for c in query_params['operator_class']])
 
-    conn = sqlite3.connect("fcculs.db")
-    conn.row_factory = sqlite3.Row
-    cur = conn.cursor()
-    cur.execute(query, params)
-    results = cur.fetchall()
-    conn.close()
+        conn = sqlite3.connect("fcculs.db")
+        conn.row_factory = sqlite3.Row
+        cur = conn.cursor()
+        cur.execute(query, params)
+        results = cur.fetchall()
+        conn.close()
+    else:
+        results = []
 
     return render_template_string(HTML_TEMPLATE, results=results)
 
