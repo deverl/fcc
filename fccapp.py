@@ -93,19 +93,19 @@ def index():
         params = []
         if query_params['call_sign']:
             query += " AND en.call_sign = ?"
-            params.append(query_params['call_sign'].upper())
+            params.append(query_params['call_sign'].upper()).strip()
         if query_params['first_name']:
             query += " AND en.first_name LIKE ?"
-            params.append(f"{query_params['first_name']}%")
+            params.append(f"{query_params['first_name'].strip()}%")
         if query_params['last_name']:
             query += " AND en.last_name LIKE ?"
-            params.append(f"{query_params['last_name']}%")
+            params.append(f"{query_params['last_name'].strip()}%")
         if query_params['city']:
             query += " AND en.city LIKE ?"
-            params.append(f"{query_params['city']}%")
+            params.append(f"{query_params['city'].strip()}%")
         if query_params['state']:
             query += " AND en.state = ?"
-            params.append(query_params['state'].upper())
+            params.append(query_params['state'].strip().upper())
         if query_params['license_status']:
             placeholders = ','.join('?' for _ in query_params['license_status'])
             query += f" AND hd.license_status IN ({placeholders})"
