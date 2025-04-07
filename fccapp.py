@@ -21,11 +21,11 @@ HTML_TEMPLATE = """
 <body>
     <h1>Ham Radio License Lookup</h1>
     <form method="get">
-        <label>Call Sign: <input type="text" name="call_sign"></label><br>
-        <label>First Name: <input type="text" name="first_name"></label>
-        <label>Last Name: <input type="text" name="last_name"></label><br>
-        <label>City: <input type="text" name="city"></label>
-        <label>State: <input type="text" name="state"></label><br>
+        <label>Call Sign: <input type="text" name="call_sign" name="first_name" value="{{ params.call_sign if params.call_sign is defined else '' }}"></label><br>
+        <label>First Name: <input type="text" name="first_name" value="{{ params.first_name if params.first_name is defined else '' }}"></label>
+        <label>Last Name: <input type="text" name="last_name" value="{{ params.last_name if params.last_name is defined else '' }}"></label><br>
+        <label>City: <input type="text" name="city" value="{{ params.city if params.city is defined else '' }}"></label>
+        <label>State: <input type="text" name="state" value="{{ params.state if params.state is defined else '' }}"></label><br>
 
         <p>License Status:</p>
         {% for status in ['A', 'C', 'E', 'L', 'P', 'T', 'X'] %}
@@ -123,7 +123,7 @@ def index():
     else:
         results = []
         
-    return render_template_string(HTML_TEMPLATE, results=results)
+    return render_template_string(HTML_TEMPLATE, params=query_params, results=results)
 
 if __name__ == '__main__':
     app.run(debug=True)
