@@ -8,6 +8,9 @@ HTML_TEMPLATE = """
 <html>
 <head>
     <title>Ham Radio Lookup</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Page</title>
     <style>
         table {
             border-collapse: collapse;
