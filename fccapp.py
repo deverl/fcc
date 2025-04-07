@@ -52,9 +52,9 @@ HTML_TEMPLATE = """
                     <td>{{ row['license_status'] }}</td>
                     <td>{{ row['operator_class'] }}</td>
                     <td>{{ row['region_code'] }}</td>
-                    <td>{{ row['first_name'] }}</td>
-                    <td>{{ row['last_name'] }}</td>
-                    <td>{{ row['city'] }}</td>
+                    <td>{{ row['first_name'].title() }}</td>
+                    <td>{{ row['last_name'].title() }}</td>
+                    <td>{{ row['city'].title() }}</td>
                     <td>{{ row['state'] }}</td>
                 </tr>
             {% endfor %}
@@ -112,6 +112,8 @@ def index():
             query += f" AND am.operator_class IN ({placeholders})"
             params.extend([c.upper() for c in query_params['operator_class']])
 
+        query += " ORDER BY en.last_name ASC, en.first_name ASC"
+
         conn = sqlite3.connect("fcculs.db")
         conn.row_factory = sqlite3.Row
         cur = conn.cursor()
@@ -120,7 +122,7 @@ def index():
         conn.close()
     else:
         results = []
-
+        
     return render_template_string(HTML_TEMPLATE, results=results)
 
 if __name__ == '__main__':
