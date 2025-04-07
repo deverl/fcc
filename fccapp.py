@@ -93,7 +93,7 @@ def index():
         params = []
         if query_params['call_sign']:
             query += " AND en.call_sign = ?"
-            params.append(query_params['call_sign'].upper()).strip()
+            params.append(query_params['call_sign'].upper().strip())
         if query_params['first_name']:
             query += " AND en.first_name LIKE ?"
             params.append(f"{query_params['first_name'].strip()}%")
