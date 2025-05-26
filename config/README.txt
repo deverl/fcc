@@ -87,8 +87,6 @@ sudo systemctl restart nginx
 
 # Put this line in the crontab file to automatically update the database every Monday morning
 
-0 2 * * 1 cd /root/projects/fccmysql && /root/projects/fccmysql/bin/udpate.sh >> /root/projects/fccmysql/update.log 2>&1
-
-
+0 2 * * 1 cd /opt/fcc && /opt/fcc/bin/update.sh >> /opt/fcc/update.log 2>&1
 
 
