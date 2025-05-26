@@ -32,7 +32,7 @@ cd /path/to/fccmysql
 rm -rf venv
 python3 -m venv venv
 source venv/bin/activate
-pip install flask gunicorn pymysql mysql-connector-python
+pip install flask gunicorn pymysql mysql-connector-python blinker click flask_cors itsdangerous jinja2 MarkupSafe packaging PyYAML ua-parser ua-parser-builtins user-agents werkzeug titlecase
 
 
 
