@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd server
+
 if [ "$(uname)" = "Darwin" -o "$(hostname)" = "penguin" ]
 then
     flask --app fccapp run --port 4000

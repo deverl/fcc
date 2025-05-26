@@ -1,52 +1,53 @@
 import React from "react";
 
 const HamTable = ({ data }) => {
-    const columns = [
-        "Call Sign",
-        "First Name",
-        "Last Name",
-        "Street Address",
-        "City",
-        "State",
-        "ZIP",
-        "Operator Class",
-        "License Status",
-        "FRN",
-        "Region Code",
-        "DMR ID",
-    ];
-
     return (
-        <div className="max-h-[500px] overflow-auto border rounded shadow">
-            {/* Grid Header */}
-            <div className="grid grid-cols-12 bg-gray-100 sticky top-0 z-10 border-b border-gray-300 text-sm font-semibold text-gray-700">
-                {columns.map((col, idx) => (
-                    <div key={idx} className="p-2 border-r last:border-r-0">
-                        {col}
-                    </div>
-                ))}
-            </div>
-
-            {/* Grid Rows */}
-            {data.map((row, rowIndex) => (
-                <div
-                    key={rowIndex}
-                    className="grid grid-cols-12 border-b border-gray-200 text-sm even:bg-gray-50"
-                >
-                    <div className="p-2 border-r">{row.call_sign}</div>
-                    <div className="p-2 border-r">{row.first_name}</div>
-                    <div className="p-2 border-r">{row.last_name}</div>
-                    <div className="p-2 border-r">{row.street_address}</div>
-                    <div className="p-2 border-r">{row.city}</div>
-                    <div className="p-2 border-r">{row.state}</div>
-                    <div className="p-2 border-r">{row.zip}</div>
-                    <div className="p-2 border-r">{row.operator_class}</div>
-                    <div className="p-2 border-r">{row.license_status}</div>
-                    <div className="p-2 border-r">{row.frn}</div>
-                    <div className="p-2 border-r">{row.region_code}</div>
-                    <div className="p-2">{row.dmr_id || "-"}</div>
-                </div>
-            ))}
+        <div className="overflow-auto max-h-[500px] border rounded shadow">
+            <table className="min-w-full table-auto border-collapse">
+                <thead className="sticky top-0 bg-gray-100 text-sm font-semibold text-gray-700 border-b border-gray-300 z-10">
+                    <tr>
+                        <th className="p-2 border-r">Call Sign</th>
+                        <th className="p-2 border-r">First Name</th>
+                        <th className="p-2 border-r">Last Name</th>
+                        <th className="p-2 border-r">Street Address</th>
+                        <th className="p-2 border-r">City</th>
+                        <th className="p-2 border-r">State</th>
+                        <th className="p-2 border-r">ZIP</th>
+                        <th className="p-2 border-r">Operator Class</th>
+                        <th className="p-2 border-r">License Status</th>
+                        <th className="p-2 border-r">FRN</th>
+                        <th className="p-2 border-r">Region Code</th>
+                        <th className="p-2">DMR ID</th>
+                    </tr>
+                </thead>
+                <tbody className="text-sm">
+                    {data.map((row, index) => (
+                        <tr
+                            key={index}
+                            className="even:bg-gray-50 border-b border-gray-200"
+                        >
+                            <td className="p-2 border-r">{row.call_sign}</td>
+                            <td className="p-2 border-r">{row.first_name}</td>
+                            <td className="p-2 border-r">{row.last_name}</td>
+                            <td className="p-2 border-r">
+                                {row.street_address}
+                            </td>
+                            <td className="p-2 border-r">{row.city}</td>
+                            <td className="p-2 border-r">{row.state}</td>
+                            <td className="p-2 border-r">{row.zip}</td>
+                            <td className="p-2 border-r">
+                                {row.operator_class}
+                            </td>
+                            <td className="p-2 border-r">
+                                {row.license_status}
+                            </td>
+                            <td className="p-2 border-r">{row.frn}</td>
+                            <td className="p-2 border-r">{row.region_code}</td>
+                            <td className="p-2">{row.dmr_id || "-"}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     );
 };
