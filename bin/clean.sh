@@ -14,9 +14,15 @@ do
     shift
 done
 
-rm -f *.dat *.csv counts fcculs.db
 
-if [ $CLEAN_ALL -gt 0 ]
+if [ -d data ]
 then
-    rm -f l_amat.zip
+    cd data
+
+    rm -f *.dat *.csv counts fcculs.db
+
+    if [ $CLEAN_ALL -gt 0 ]
+    then
+        rm -f l_amat.zip
+    fi
 fi
