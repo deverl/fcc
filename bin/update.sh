@@ -2,9 +2,6 @@
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-
-
-
 echo -n "Starting at: "
 date
 
@@ -12,7 +9,7 @@ rm -rf data
 
 mkdir -p data
 
-cd $data
+cd data
 
 echo "Fetching latest data..."
 if [ "$(uname)" = "Darwin" ]
@@ -31,7 +28,6 @@ then
     exit 1
 fi
 
-
 echo "Extracting..."
 
 unzip -o l_amat.zip
@@ -39,9 +35,6 @@ unzip -o l_amat.zip
 echo "Creating DB..."
 
 mysql -u fccuser -pfccuser < ${SCRIPT_DIR}/mkdbs.sql
-
-
-
 
 echo -n "Importing DMR data..."
 date
