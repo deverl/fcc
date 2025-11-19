@@ -1,0 +1,32 @@
+#!/bin/bash
+
+if [ ! -d db_bkup ]
+then
+    echo "ERROR: Are you sure you are in the fcc directory!"
+    exit 1
+fi
+
+cd db_bkup
+
+TS=$(timestamp)
+
+FNAME=fcc-$TS.sql
+
+
+echo "Backing up..."
+
+mysqldump -u fccuser -pfccuser fcc > $FNAME
+
+
+echo "Compressing..."
+
+bzip2 -9 $FNAME
+
+
+echo "Setting uchg flag..."
+
+chflags uchg $FNAME.bz2
+
+ls -lh
+
+echo "done."
