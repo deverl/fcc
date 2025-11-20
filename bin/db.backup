@@ -22,11 +22,6 @@ echo "Compressing..."
 
 bzip2 -9 $FNAME
 
-
-echo "Setting uchg flag..."
-
-chflags uchg $FNAME.bz2
-
 ls -lh
 
 echo "done."
