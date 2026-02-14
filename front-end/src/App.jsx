@@ -67,19 +67,19 @@ function App() {
             )}
 
             {!loading && data.length === 0 && queryCount > 0 && (
-                <div className="text-left max-w-6xl mx-auto p-4 text-center text-gray-500">
+                <div className="text-left max-w-6xl mx-auto p-4 text-center text-gray-500 dark:text-gray-400">
                     No results found.
                 </div>
             )}
 
             {!loading && data.length === 1 && (
-                <div className="text-left max-w-6xl mx-auto p-4 text-center text-gray-500">
+                <div className="text-left max-w-6xl mx-auto p-4 text-center text-gray-500 dark:text-gray-400">
                     <h2>Found 1 matching record</h2>
                 </div>
             )}
 
             {!loading && data.length > 1 && (
-                <div className="text-left max-w-6xl mx-auto p-4 text-center text-gray-500">
+                <div className="text-left max-w-6xl mx-auto p-4 text-center text-gray-500 dark:text-gray-400">
                     <h2>Found {data.length} matching records</h2>
                 </div>
             )}

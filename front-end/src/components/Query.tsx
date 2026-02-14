@@ -62,7 +62,7 @@ export const Query: React.FC<QueryProps> = ({ onSearch }) => {
     return (
         <form
             onSubmit={handleSubmit}
-            className="max-w-xl mx-auto p-6 bg-white border rounded shadow space-y-4"
+            className="max-w-xl mx-auto p-6 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-600 rounded shadow space-y-4"
         >
             {(
                 [
@@ -86,7 +86,7 @@ export const Query: React.FC<QueryProps> = ({ onSearch }) => {
                         type="text"
                         value={value}
                         onChange={(e) => setter(e.target.value)}
-                        className="border border-gray-300 rounded px-2 py-1 w-full"
+                        className="border border-gray-300 dark:border-gray-600 rounded px-2 py-1 w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                     />
                 </div>
             ))}
